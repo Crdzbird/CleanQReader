@@ -26,7 +26,7 @@ const QRDetailScreen: React.FC = () => {
           </Card>
         );
     }
-
+    console.log(qrList.length);
     return (qrList.length === 0) ?
          (<SafeAreaView style={styles.container}>
             <Image source={require('../assets/images/empty.gif')}/>

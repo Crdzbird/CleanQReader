@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
       backgroundColor: 'transparent',
       padding: 0,
       borderWidth: 0,
-            ...StyleSheet.absoluteFillObject,
+      ...StyleSheet.absoluteFillObject,
     },
     permissionRejected: {
         fontSize: 20, 
@@ -39,6 +39,15 @@ export const styles = StyleSheet.create({
         fontSize: 24,
         color: Colors.primaryText,
     },
+  qrTitleScan: {
+    fontFamily: 'PoppinsRegular',
+    fontSize: 25,
+    fontWeight: '700',
+    marginBottom: '10%',
+    textAlign: 'center',
+    width: '70%',
+    color: 'white',
+  },
     cardTitle: {
         fontFamily: 'PoppinsRegular',
         fontSize: 24,
@@ -49,15 +58,14 @@ export const styles = StyleSheet.create({
       position: 'relative',
       alignItems: 'center',
     },
-
     qrFocusIcon: {
       marginTop: 0,
       marginBottom: 0,
     },
     animationLineStyle: {
-      height: 20,
+      height: 17,
       width: '55%',
-      backgroundColor: 'rgba(254,125,85,0.4)',
+      backgroundColor: Colors.secondaryText,
       position: 'absolute',
       borderRadius: 15,
       marginLeft: 'auto',

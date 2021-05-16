@@ -19,6 +19,7 @@ export default (state: QrStateType = initState, action: QrActionType): QrStateTy
                 return {
                 ...state,
                 qrData: [
+                    ...state.qrData,
                     {
                         data: qrData!.data,
                     }

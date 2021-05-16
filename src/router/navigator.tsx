@@ -20,7 +20,7 @@ export const MainPresentationRoute = () => {
         <NavigationContainer>
             <PresentationStack.Navigator initialRouteName={SplashPageRoute} headerMode='none'>
                 <PresentationStack.Screen name={SplashPageRoute} component={SplashPage}/>
-                <PresentationStack.Screen name={'tabNavigator'} component={Tabs}/>
+                <PresentationStack.Screen name={'tabNavigator'}  component={Tabs}/>
             </PresentationStack.Navigator>
         </NavigationContainer>
     );

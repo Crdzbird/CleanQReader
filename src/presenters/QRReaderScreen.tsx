@@ -1,31 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Dimensions } from 'react-native';
-import { Animated } from 'react-native';
+import { Animated, Text } from 'react-native';
 import { styles } from '../config/styles';
 import QRFocusIcon from './components/svgComponent';
 import PermissionDeniedComponent from './components/permissionDeniedComponent';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQReader } from '../core/hooks/useQReader';
+import SvgComponent from './components/svgComponent';
 
 export const QReaderPageRoute = 'qrReader';
 
 const QRReaderScreen: React.FC = () => {
     const {
-    QRDetected,
     animationLineHeight,
-    dispatch,
     focusLineAnimation,
     handleBarCodeScanned,
     hasPermission,
-    saveQRData,
     scanned,
+    navigation,
     setAnimationLineHeight,
   } = useQReader();
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: 'QR Reader',
+    });
+  }, []);
+
     const {width: viewportWidth} = Dimensions.get('window');
-    
     return (hasPermission === false) ?
      (
       <PermissionDeniedComponent/>
@@ -46,7 +50,8 @@ const QRReaderScreen: React.FC = () => {
             onLayout={e => setAnimationLineHeight(e.nativeEvent.layout.height)}
             style={styles.focusedContainer}
           >
-            <QRFocusIcon style={{...styles.qrFocusIcon, width: viewportWidth * 0.8, height: viewportWidth * 0.8}} />
+            <Text style={styles.qrTitleScan}>Scan your QR code</Text>
+            <SvgComponent style={{...styles.qrFocusIcon, width: viewportWidth * 0.8, height: viewportWidth * 0.8}} />
             {!scanned && (
               <Animated.View
                 style={[
@@ -56,7 +61,7 @@ const QRReaderScreen: React.FC = () => {
                       {
                         translateY: focusLineAnimation.interpolate({
                           inputRange: [0, 1],
-                          outputRange: [20, animationLineHeight - 40],
+                          outputRange: [120, animationLineHeight - 40],
                         }),
                       },
                     ],

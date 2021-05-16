@@ -74,5 +74,6 @@ const [hasPermission, setHasPermission] = useState<boolean | null>(null);
       animationLineHeight,
       focusLineAnimation,
       setAnimationLineHeight,
+      navigation,
   }
 }
