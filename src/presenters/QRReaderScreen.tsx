@@ -9,6 +9,7 @@ import PermissionDeniedComponent from './components/permissionDeniedComponent';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQReader } from '../core/hooks/useQReader';
 import SvgComponent from './components/svgComponent';
+import { Appbar } from 'react-native-paper';
 
 export const QReaderPageRoute = 'qrReader';
 
@@ -36,8 +37,13 @@ const QRReaderScreen: React.FC = () => {
     ) :
       (
     <SafeAreaView
-      style={styles.container}
+      style={{flex:1}}
     >
+        <Appbar style={styles.topAppbar}>
+   <Appbar.Content
+   title={<Text style={styles.appTitle}>QR Reader</Text>}
+    />
+  </Appbar>
         {hasPermission && (
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}

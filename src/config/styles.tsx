@@ -20,6 +20,13 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    topAppbar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: Constants.statusBarHeight,
+    backgroundColor: Colors.materialBottomTab,
+  },
     qrContainer: {
       flex: 1,
       justifyContent: 'center',
