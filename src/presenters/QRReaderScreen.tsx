@@ -1,12 +1,15 @@
 import React from 'react'
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const QReaderPageRoute = 'qrReader';
 
-export const QRReaderScreen = () => {
+const QRReaderScreen = () => {
     return (
-        <View>
-            <Text>QR Reader SCREEN</Text>
-        </View>
+        <SafeAreaView style={{flex: 1, backgroundColor: 'green'}}>
+            <Text style={{color: 'white', fontSize: 20}}>QR READER SCREEN</Text>
+        </SafeAreaView>
     )
 }
+
+export default QRReaderScreen;
