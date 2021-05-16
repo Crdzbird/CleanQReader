@@ -1,9 +1,10 @@
 import React from 'react'
-import { StatusBar, Text, View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { useFonts } from "@use-expo/font";
 import { Colors } from './src/config/styles';
 import { MainPresentationRoute } from './src/router/navigator';
+import { configureStore } from './src/core/framework/redux';
 
 const customFonts = {
   PoppinsBold: require("./src/assets/fonts/Poppins-Bold.ttf"),
@@ -16,13 +17,13 @@ const customFonts = {
 const App = () => {
       const [isLoaded] = useFonts(customFonts);
   StatusBar.setBackgroundColor(Colors.background);
-  //const store = configureStore();
+  const store = configureStore();
   return !isLoaded ?
     <View></View> :
     (
-     // <Provider store={store}>
+      <Provider store={store}>
         <MainPresentationRoute/>
-      //</Provider>
+      </Provider>
     )
 }
 
