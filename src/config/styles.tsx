@@ -39,6 +39,11 @@ export const styles = StyleSheet.create({
         fontSize: 24,
         color: Colors.primaryText,
     },
+    cardTitle: {
+        fontFamily: 'PoppinsRegular',
+        fontSize: 24,
+        color: 'black',
+    },
     focusedContainer: {
       backgroundColor: 'transparent',
       position: 'relative',

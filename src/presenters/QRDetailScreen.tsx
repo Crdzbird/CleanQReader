@@ -1,35 +1,45 @@
 import React from 'react'
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Button, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { FlatList } from 'react-native-gesture-handler';
 import { QrModel } from '../core/models/qrModel';
 import { StateTypes } from '../core/reducers/stateTypes';
 import { styles } from '../config/styles';
+import { Card, CardContent, CardTitle } from './components/cardComponent';
 
 export const QReaderDetailPageRoute = 'qrDetail';
 
 const QRDetailScreen: React.FC = () => {
     const qrList = useSelector((state: StateTypes) => state.qrData);
+    const {width: viewportWidth} = Dimensions.get('window');
 
-    const renderQR = ({item}: {item: QrModel}) => {
-        return <Text style={{color: 'blue', fontSize: 30}}>{item.data}</Text>;
-    };
-
-    if(qrList.length === 0){
-        return (<SafeAreaView style={styles.container}>
-            <Image source={require('../assets/images/empty.gif')}/>
-            <Text style={styles.appTitle}>Empty</Text>
-        </SafeAreaView>);
+    const qrCard = ({item}: {item: QrModel}) => {
+        return (
+            <Card width={viewportWidth * 0.8} height={150}>
+            <CardTitle>
+              <Text style={styles.cardTitle}>{item.data}</Text>
+            </CardTitle>
+            <CardContent>
+              <Text>{item.data}</Text>
+            </CardContent>
+          </Card>
+        );
     }
-    return (
+
+    return (qrList.length === 0) ?
+         (<SafeAreaView style={styles.container}>
+            <Image source={require('../assets/images/empty.gif')}/>
+            <Text style={styles.appTitle}>No QR Scanned</Text>
+        </SafeAreaView>)
+    :(
             <SafeAreaView style={styles.container}>
                 <FlatList
                 showsHorizontalScrollIndicator={false}
                 data={qrList}
-                renderItem={renderQR}
+                renderItem={qrCard}
                 keyExtractor={(qr: QrModel) => qr.data}/>
-            </SafeAreaView>)
+            </SafeAreaView>);
 }
 
 export default QRDetailScreen;
