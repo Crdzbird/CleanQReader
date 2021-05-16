@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Dimensions } from 'react-native';
 import { Animated, Text } from 'react-native';
-import { styles } from '../config/styles';
+import { Colors, styles } from '../config/styles';
 import QRFocusIcon from './components/svgComponent';
 import PermissionDeniedComponent from './components/permissionDeniedComponent';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -30,14 +30,15 @@ const QRReaderScreen: React.FC = () => {
     });
   }, []);
 
-    const {width: viewportWidth} = Dimensions.get('window');
+    const {width: viewportWidth, height: viewportHeight} = Dimensions.get('window');
     return (hasPermission === false) ?
      (
       <PermissionDeniedComponent/>
     ) :
       (
     <SafeAreaView
-      style={{flex:1}}
+      style={{flex:1,
+        backgroundColor: Colors.background,}}
     >
         <Appbar style={styles.topAppbar}>
    <Appbar.Content
@@ -48,9 +49,10 @@ const QRReaderScreen: React.FC = () => {
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-          style={[
-            styles.qrContainer,
-          ]}
+          style={{
+            ...styles.qrContainer,
+            height: viewportHeight,
+}}
         >
           <SafeAreaView
             onLayout={e => setAnimationLineHeight(e.nativeEvent.layout.height)}
