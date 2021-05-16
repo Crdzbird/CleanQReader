@@ -1,21 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StatusBar, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { useFonts } from "@use-expo/font";
+import { Colors } from './src/config/styles';
+import { MainPresentationRoute } from './src/router/navigator';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const customFonts = {
+  PoppinsBold: require("./src/assets/fonts/Poppins-Bold.ttf"),
+  PoppinsLight: require("./src/assets/fonts/Poppins-Light.ttf"),
+  PoppinsMedium: require("./src/assets/fonts/Poppins-Medium.ttf"),
+  PoppinsRegular: require("./src/assets/fonts/Poppins-Regular.ttf"),
+  PoppinsThin: require("./src/assets/fonts/Poppins-Thin.ttf"),
+};
+
+const App = () => {
+      const [isLoaded] = useFonts(customFonts);
+  StatusBar.setBackgroundColor(Colors.background);
+  //const store = configureStore();
+  return !isLoaded ?
+    <View></View> :
+    (
+     // <Provider store={store}>
+        <MainPresentationRoute/>
+      //</Provider>
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
