@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
       backgroundColor: 'transparent',
       padding: 0,
       borderWidth: 0,
+            ...StyleSheet.absoluteFillObject,
     },
     permissionRejected: {
         fontSize: 20, 

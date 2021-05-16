@@ -83,7 +83,6 @@ const QRReaderScreen: React.FC = () => {
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
           style={[
-            StyleSheet.absoluteFillObject,
             styles.qrContainer,
           ]}
         >
