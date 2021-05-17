@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Image, Button, Dimensions } from 'react-native';
+import { Text, Image, Dimensions, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { FlatList } from 'react-native-gesture-handler';
@@ -7,7 +7,7 @@ import { QrModel } from '../core/models/qrModel';
 import { StateTypes } from '../core/reducers/stateTypes';
 import { styles } from '../config/styles';
 import { Card, CardContent, CardTitle } from './components/cardComponent';
-import { Appbar } from 'react-native-paper';
+import { AppbarComponent } from './components/appbarComponent';
 
 export const QReaderDetailPageRoute = 'qrDetail';
 
@@ -29,21 +29,15 @@ const QRDetailScreen: React.FC = () => {
     }
     return (qrList.length === 0) ?
          (<SafeAreaView style={styles.container}>
-             <Appbar style={styles.topAppbar}>
-   <Appbar.Content
-   title={<Text style={styles.appTitle}>QR Details</Text>}
-    />
-  </Appbar>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
+                <AppbarComponent title='QR Details'/>
             <Image source={require('../assets/images/empty.gif')}/>
             <Text style={styles.appTitle}>No QR Scanned</Text>
         </SafeAreaView>)
     :(
             <SafeAreaView style={styles.container}>
-                <Appbar style={styles.topAppbar}>
-   <Appbar.Content
-   title={<Text style={styles.appTitle}>QR Details</Text>}
-    />
-  </Appbar>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
+                <AppbarComponent title='QR Details'/>
                 <FlatList style={{paddingTop: 65}}
                 showsHorizontalScrollIndicator={false}
                 data={qrList}

@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { initQRData, QrActionType, UPDATE_QR_LIST, INIT_QR_LIST } from '../actions/qrAction';
+import { initQRData, QrActionTypes } from '../actions/qrAction';
 
 const promiseTimeout = (time: number) => async() => new Promise(resolve => setTimeout(resolve, time, time));
 
@@ -15,5 +15,5 @@ function* getInitialQrViewModel() {
 }
 
 export default function* rootViewModel() {
-    yield all([takeLatest('INIT_QR_LIST', getInitialQrViewModel)]);
+    yield all([takeLatest(QrActionTypes.INIT_QR_LIST, getInitialQrViewModel)]);
 }

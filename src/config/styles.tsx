@@ -1,4 +1,4 @@
-import { Animated, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 
@@ -20,11 +20,16 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    topAppbar: {
+    safeAreaContainer: {
+      flex:1,
+      backgroundColor: Colors.background,
+    },
+  topAppbar: {
     position: 'absolute',
     left: 0,
     right: 0,
-    top: Constants.statusBarHeight,
+    top: 0,
+    elevation: 7,
     backgroundColor: Colors.materialBottomTab,
   },
     qrContainer: {

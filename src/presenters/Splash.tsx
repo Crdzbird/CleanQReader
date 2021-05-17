@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, StatusBar } from 'react-native';
 import { Colors } from '../config/styles';
 import { styles } from '../config/styles';
 
@@ -13,6 +13,7 @@ const SplashPage: React.FC = () => {
     }, []);
  return (
      <View style={styles.container}>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
          <Text style={styles.appTitle}>CleanQReader</Text>
          <ActivityIndicator size='small' color={Colors.primaryText}/>
      </View>
