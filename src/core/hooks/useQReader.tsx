@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import { QReaderDetailPageRoute } from "../../presenters/QRDetailScreen";
 import { addQrData } from "../actions/qrAction";
 import { HandleBarCodeScanned } from "../models/scanModel";
+import '../../i18n/translation';
+import i18nInstance from '../../i18n/translation';
+import { useTranslation } from "react-i18next";
 
 export const useQReader = () => {
     const Animations=require('../../config/animators.tsx');
@@ -35,17 +38,18 @@ const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   };
 
   const QRDetected = (data: string) => {
+
     Alert.alert(
-      'QR Code detected',
+        i18nInstance.t('QR Code detected'),
       `${data}`,
       [
         {
-          text: 'Read again',
+          text: i18nInstance.t('Read again'),
           onPress: () => setScanned(false),
           style: 'cancel',
         },
         {
-          text: 'Register QR',
+          text: i18nInstance.t('Register QR'),
           onPress: () => {
             saveQRData(data);
             navigation.navigate(QReaderDetailPageRoute);

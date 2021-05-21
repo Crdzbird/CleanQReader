@@ -3,13 +3,14 @@ import React, { useEffect } from 'react'
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Dimensions, StatusBar } from 'react-native';
 import { Animated, Text } from 'react-native';
-import { Colors, styles } from '../config/styles';
-import QRFocusIcon from './components/svgComponent';
+import { styles } from '../config/styles';
 import PermissionDeniedComponent from './components/permissionDeniedComponent';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQReader } from '../core/hooks/useQReader';
 import SvgComponent from './components/svgComponent';
 import { AppbarComponent } from './components/appbarComponent';
+import '../i18n/translation';
+import i18nInstance from '../i18n/translation';
 
 export const QReaderPageRoute = 'qrReader';
 
@@ -50,7 +51,7 @@ const QRReaderScreen: React.FC = () => {
           <SafeAreaView
             onLayout={e => setAnimationLineHeight(e.nativeEvent.layout.height)}
             style={styles.focusedContainer}>
-            <Text style={styles.qrTitleScan}>Scan your QR code</Text>
+            <Text style={styles.qrTitleScan}>{i18nInstance.t('Scan your QR code')}</Text>
             <SvgComponent style={{...styles.qrFocusIcon, width: viewportWidth * 0.8, height: viewportWidth * 0.8}} />
             {(
               <Animated.View

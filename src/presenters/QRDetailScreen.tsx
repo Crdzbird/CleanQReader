@@ -10,6 +10,8 @@ import { Card, CardContent } from './components/cardComponent';
 import { AppbarComponent } from './components/appbarComponent';
 import { checkQRType } from './qr-types';
 import { useCardDetail } from '../core/hooks/useCardDetail';
+import '../i18n/translation';
+import i18nInstance from '../i18n/translation';
 
 export const QReaderDetailPageRoute = 'qrDetail';
 
@@ -49,7 +51,7 @@ const QRDetailScreen: React.FC = () => {
       <StatusBar backgroundColor="black" barStyle="light-content" />
                 <AppbarComponent title='QR Details'/>
             <Image source={require('../assets/images/empty.gif')}/>
-            <Text style={styles.appTitle}>No QR Scanned</Text>
+            <Text style={styles.appTitle}>{i18nInstance.t('No QR Scanned')}</Text>
         </SafeAreaView>)
     :(
             <SafeAreaView style={styles.container}>
