@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Project used to read and store a list of QR Codes.\nStack used:\n- Redux-thunk.\n- Redux-saga\n- Hooks\n- Reducers\n- Navigator\n- Redux\n- ViewModels\n- Expo",
+    "githubUrl": "https://github.com/Crdzbird/CleanQReader"
   }
 }

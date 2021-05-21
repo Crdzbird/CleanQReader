@@ -17,7 +17,7 @@ const QRDetailScreen: React.FC = () => {
 
     const qrCard = ({item}: {item: QrModel}) => {
         return (
-            <Card width={viewportWidth * 0.8} height={150}>
+            <Card width={viewportWidth * 0.8}>
             <CardTitle>
               <Text style={styles.cardTitle}>{item.data}</Text>
             </CardTitle>

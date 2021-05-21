@@ -52,7 +52,7 @@ const QRReaderScreen: React.FC = () => {
             style={styles.focusedContainer}>
             <Text style={styles.qrTitleScan}>Scan your QR code</Text>
             <SvgComponent style={{...styles.qrFocusIcon, width: viewportWidth * 0.8, height: viewportWidth * 0.8}} />
-            {!scanned && (
+            {(
               <Animated.View
                 style={[
                   styles.animationLineStyle,

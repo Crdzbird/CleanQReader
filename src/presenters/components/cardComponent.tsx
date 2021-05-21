@@ -8,7 +8,7 @@ import {
 
 const Card = (props: any) => {
     return (
-      <View style={[styles.container, styles.card, {width: props.width, height: props.height}]}>
+      <View style={[styles.container, styles.card, {width: props.width}]}>
         {props.children}
       </View>
     )
