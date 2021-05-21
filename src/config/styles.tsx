@@ -39,13 +39,13 @@ export const styles = StyleSheet.create({
     },
     itemType: {
       fontSize: 16,
-      fontFamily: 'poppins-semibold',
+      fontFamily: 'PoppinsBold',
       color: Colors.primaryText,
       paddingBottom: 2,
     },
     itemData: {
       color: Colors.primaryText,
-      fontFamily: 'poppins-regular',
+      fontFamily: 'PoppinsRegular',
     },
   topAppbar: {
     position: 'absolute',

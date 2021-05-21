@@ -2,37 +2,29 @@ import React from 'react'
 import { Text, Image, Dimensions, StatusBar, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { QrModel } from '../core/models/qrModel';
 import { StateTypes } from '../core/reducers/stateTypes';
 import { Colors, styles } from '../config/styles';
-import { Card, CardContent, CardTitle } from './components/cardComponent';
+import { Card, CardContent } from './components/cardComponent';
 import { AppbarComponent } from './components/appbarComponent';
-import MaterialCommunityIcons from '@expo/vector-icons/build/MaterialCommunityIcons';
 import { checkQRType } from './qr-types';
+import { useCardDetail } from '../core/hooks/useCardDetail';
 
 export const QReaderDetailPageRoute = 'qrDetail';
 
-function QRIcon(props: {
-  name: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
-  color: string;
-}) {
-  return (
-    <MaterialCommunityIcons
-      size={35}
-      style={styles.itemQRIcon}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...props}
-    />
-  );
-}
-
 const QRDetailScreen: React.FC = () => {
+    const {
+      notifyMessage,
+      onTap,
+      QRIcon,
+    } = useCardDetail();
     const qrList = useSelector((state: StateTypes) => state.qrData);
     const {width: viewportWidth} = Dimensions.get('window');
 
     const qrCard = ({item}: {item: QrModel}) => {
         return (
+          <TouchableOpacity onPress={() => onTap(checkQRType(item.data).dataType, item.data)}>
             <Card width={viewportWidth * 0.8} styles={styles.safeAreaContainer}>
             <CardContent>
               <QRIcon
@@ -49,6 +41,7 @@ const QRDetailScreen: React.FC = () => {
                     </View>
             </CardContent>
           </Card>
+      </TouchableOpacity>
         );
     }
     return (qrList.length === 0) ?
