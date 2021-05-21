@@ -1,15 +1,31 @@
 import React from 'react'
-import { Text, Image, Dimensions, StatusBar } from 'react-native';
+import { Text, Image, Dimensions, StatusBar, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { FlatList } from 'react-native-gesture-handler';
 import { QrModel } from '../core/models/qrModel';
 import { StateTypes } from '../core/reducers/stateTypes';
-import { styles } from '../config/styles';
+import { Colors, styles } from '../config/styles';
 import { Card, CardContent, CardTitle } from './components/cardComponent';
 import { AppbarComponent } from './components/appbarComponent';
+import MaterialCommunityIcons from '@expo/vector-icons/build/MaterialCommunityIcons';
+import { checkQRType } from './qr-types';
 
 export const QReaderDetailPageRoute = 'qrDetail';
+
+function QRIcon(props: {
+  name: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
+  color: string;
+}) {
+  return (
+    <MaterialCommunityIcons
+      size={35}
+      style={styles.itemQRIcon}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...props}
+    />
+  );
+}
 
 const QRDetailScreen: React.FC = () => {
     const qrList = useSelector((state: StateTypes) => state.qrData);
@@ -17,12 +33,20 @@ const QRDetailScreen: React.FC = () => {
 
     const qrCard = ({item}: {item: QrModel}) => {
         return (
-            <Card width={viewportWidth * 0.8}>
-            <CardTitle>
-              <Text style={styles.cardTitle}>{item.data}</Text>
-            </CardTitle>
+            <Card width={viewportWidth * 0.8} styles={styles.safeAreaContainer}>
             <CardContent>
-              <Text>{item.data}</Text>
+              <QRIcon
+                      name={checkQRType(item.data).icon}
+                      color={Colors.greenText}
+                    />
+              <View style={styles.itemQRInfo}>
+                      <Text style={styles.itemType}>
+                        {checkQRType(item.data).dataType}
+                      </Text>
+                      <Text style={styles.itemData}>
+                        {item.data}
+                      </Text>
+                    </View>
             </CardContent>
           </Card>
         );

@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native'
+import { Colors } from '../../config/styles';
 
 const Card = (props: any) => {
     return (
@@ -49,8 +50,8 @@ const styles = StyleSheet.create({
     margin: 5
   },
   card: {
-    backgroundColor: "#fff",
-    borderRadius: 2,
+    backgroundColor: Colors.cardBackground,
+    borderRadius: 17,
     shadowColor: "#000000",
     shadowOpacity: 0.3,
     shadowRadius: 1,
@@ -68,10 +69,17 @@ const styles = StyleSheet.create({
     padding: 16
   },
   cardContent: {
-    paddingRight: 16,
-    paddingLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 16,
+    backgroundColor: 'transparent',
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    paddingTop: 10,
+    paddingBottom: 2,
+    paddingLeft: 15,
+    paddingRight: 15,
+    minWidth: '100%',
   },
   cardAction: {
     margin: 8,

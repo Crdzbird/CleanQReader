@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 
 export const Colors = {
   background: '#1d1d27',
+  cardBackground: '#468515',
   primaryText: '#ffffff',
   secondaryText: '#b3b3b3',
   greenText: '#5fe835',
@@ -20,9 +21,31 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    itemQRIcon: {
+      padding: 5,
+      marginTop: 5,
+      marginRight: 15,
+      backgroundColor: Colors.secondaryText,
+      borderRadius: 7,
+    },
     safeAreaContainer: {
       flex:1,
       backgroundColor: Colors.background,
+    },
+
+    itemQRInfo: {
+      flex: 1,
+      backgroundColor: 'transparent',
+    },
+    itemType: {
+      fontSize: 16,
+      fontFamily: 'poppins-semibold',
+      color: Colors.primaryText,
+      paddingBottom: 2,
+    },
+    itemData: {
+      color: Colors.primaryText,
+      fontFamily: 'poppins-regular',
     },
   topAppbar: {
     position: 'absolute',
